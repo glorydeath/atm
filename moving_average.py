@@ -3,8 +3,9 @@ import matplotlib.finance as finance
 import numpy as np
 import matplotlib.mlab as mlab
 
-
 today = datetime.date.today()
+startdate = today - datetime.timedelta(days=90)
+yesterday = today - datetime.timedelta(days=1)
 ticker = 'AMZN'
 
 
@@ -35,3 +36,11 @@ def moving_average(n, startdate, enddate=today, t=ticker, type='exponential'):
     a = np.convolve(x, weights, mode='full')[:len(x)]
     a[:n] = a[n]
     return a
+
+ma3 = moving_average(3, startdate)
+ma13 = moving_average(13, startdate)
+ma34 = moving_average(34, startdate)
+
+print ma3
+print ma13
+print ma34
